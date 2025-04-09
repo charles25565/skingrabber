@@ -8,7 +8,7 @@ document.querySelector("#grab").addEventListener("click", async function() {
     let xuidRequestUrl = "https://api.geysermc.org/v2/xbox/xuid/" + encodeURIComponent(gamertag);
     let xuid = await (await fetch(xuidRequestUrl)).json();
     if (xuid.message) {
-        error.textContent = "Error! Geyser said this: " + xuid.message;
+        error.textContent = "Geyser said this: " + xuid.message;
         return false;
     }
     let skinRequestUrl = "https://api.geysermc.org/v2/skin/" + xuid.xuid;
