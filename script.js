@@ -13,6 +13,10 @@ document.querySelector("#grab").addEventListener("click", async function() {
     }
     let skinRequestUrl = "https://api.geysermc.org/v2/skin/" + xuid.xuid;
     let skin = await (await fetch(skinRequestUrl)).json();
+    if (typeof skin.texture_id === "undefined") {
+        error.textContent = "Geyser sent no skin texture ID!";
+        return false;
+    }
     skinDisplay.style.display = "block";
     skinDisplay.src = "https://textures.minecraft.net/texture/" + skin.texture_id;
 });
